@@ -1,0 +1,19 @@
+{
+  "name": "project-2",
+  "version": "1.0.0",
+  "description": "buy my time web app",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev":"concurrently \"npm start\" \"npm run client\""
+  },
+  "author": "nandhu s",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.0.0",
+    "dotenv": "^14.2.0",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
