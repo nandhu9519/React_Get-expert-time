@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import AdminLogin from './adminComponents/AdminLogin';
 import './index.css';
-import User from './userComponents/user/User';
+import User from './userComponents/User';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 ReactDOM.render(
   <React.StrictMode>
