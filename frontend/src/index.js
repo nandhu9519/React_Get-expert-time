@@ -1,11 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import AdminLogin from './adminComponents/AdminLogin';
 import './index.css';
-import App from './App';
+import User from './userComponents/user/User';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<User />} />
+      <Route path='/admin' element={<AdminLogin />}/>
+    </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
