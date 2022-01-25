@@ -1,0 +1,39 @@
+.body{
+    background-color: white;
+    height: 60rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('https://wallpaperaccess.com/full/2314950.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.googleSignup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.or{
+    font-size: x-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.register{
+    font-weight: normal;
+    font-size: x-large;
+}
