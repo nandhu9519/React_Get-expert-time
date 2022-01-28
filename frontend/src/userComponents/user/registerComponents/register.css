@@ -37,3 +37,9 @@ input::-webkit-inner-spin-button {
     font-weight: normal;
     font-size: x-large;
 }
+.errors{
+    color: firebrick;
+}
+.logInLink{
+    text-decoration: none;
+}

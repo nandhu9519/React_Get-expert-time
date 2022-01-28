@@ -1,9 +1,19 @@
+var MongoClient= require('mongodb').MongoClient;
+const state={
+    db:null
+}
 
-const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://nandhu:<password>@cluster0.hb3lh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+module.exports.connect=function(done){
+    const url='mongodb://localhost:27017'
+    const dbname='connectExpert'
+    
+    MongoClient.connect(url,(err,data)=>{
+        if(err) return done(err)
+        state.db=data.db(dbname)
+        done()
+    })
+}
+
+module.exports.get=function(){
+    return state.db
+}
