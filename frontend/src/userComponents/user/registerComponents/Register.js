@@ -13,7 +13,6 @@ import Container from "@material-ui/core/Container";
 import Header from "../../Header";
 import { Card } from "react-bootstrap";
 import "./register.css";
-import GoogleButton from "react-google-button";
 import validation from "./validation";
 import axios from "axios";
 import Alert from "@mui/material/Alert";
@@ -68,19 +67,24 @@ export default function SignUp() {
     e.preventDefault();
     setErrors(validation(values));
     setDataCorrect(true);
+    
   };
 
   useEffect(async () => {
+  
     if (Object.keys(errors).length === 0 && dataCorrect) {
-      let response = await axios.post(
-        "http://localhost:5000/users/api/register",
-        values
-      );
-      console.log("response", response);
-      if (response.data.status == false) {
-        setSignupError(true);
-      } else {
-        setSignupSuccess(true);
+      try{
+        let response = await axios.post(
+          "http://localhost:5000/users/api/register",
+          values
+        );
+        if (response.data.status == false) {
+          setSignupError(true);
+        } else {
+          setSignupSuccess(true);
+        }
+      }catch(error){
+        setSignupError(error.response.data.message)
       }
     }
   }, [errors]);
@@ -100,25 +104,19 @@ export default function SignUp() {
                 Sign up
               </Typography>
               <br />
-              <div className="googleSignup">
+              {/* <div className="googleSignup">
                 <GoogleButton
                   onClick={() => {
                     console.log("Google button clicked");
                   }}
                 />
-              </div>
-              <br></br>
+              </div> */}
+              {/* <br></br>
               <div className="row">
-                {/* <div className='col-md-5'>
-                                <hr></hr>
-                            </div> */}
                 <div className="">
                   <p style={{ fontWeight: "bold", fontSize: "large" }}>OR</p>
                 </div>
-                {/* <div className='col-md-5'>
-                                <hr></hr>
-                            </div> */}
-              </div>
+              </div> */}
               <form className={classes.form} onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
@@ -148,9 +146,9 @@ export default function SignUp() {
                       name="lastName"
                       autoComplete="lname"
                     />
-                    {errors.lastName && (
-                      <p className="errors">{errors.lastName}</p>
-                    )}
+                      {errors.lastName && (
+                        <p className="errors">{errors.lastName}</p>
+                      )}
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
@@ -200,7 +198,7 @@ export default function SignUp() {
                 </Grid>
                 <br />
                 {signupError && (
-                  <Alert severity="error">User already exist</Alert>
+                  <Alert severity="error">{signupError}</Alert>
                 )}
                 {signupSuccess && (
                   <Alert severity="success">
